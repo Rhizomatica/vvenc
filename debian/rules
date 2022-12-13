@@ -1,0 +1,38 @@
+#!/usr/bin/make -f
+
+ifeq ($(DEB_HOST_ARCH_CPU),amd64)
+	confflags=-DVVENC_ENABLE_X86_SIMD=TRUE
+else
+	confflags=-DVVENC_ENABLE_X86_SIMD=FALSE
+endif
+
+%:
+	dh $@ -Scmake+ninja --with quilt
+
+override_dh_auto_configure:
+	dh_auto_configure -- \
+	-DBUILD_SHARED_LIBS=ON \
+	-DVVENC_ENABLE_INSTALL=ON \
+	-DCMAKE_SKIP_INSTALL_RPATH=ON \
+	-DVVENC_ENABLE_LINK_TIME_OPT=OFF \
+	-DCMAKE_BUILD_TYPE=Release \
+	$(confflags)
+
+#	exit 1
+
+override_dh_auto_install:
+	dh_auto_install
+       # keep compatibility with previous versions
+	mkdir -p debian/vvenc/opt/vvc
+	ln -sf ../../usr/bin/vvencapp \
+		debian/vvenc/opt/vvc/vvencapp
+	ln -sf ../../usr/bin/vvencFFapp \
+		debian/vvenc/opt/vvc/vvencFFapp
+
+override_dh_clean:
+	dh_clean
+
+	rm -rf bin
+	rm -rf lib
+
+override_dh_auto_test:
