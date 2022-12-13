@@ -19,6 +19,16 @@ See the [Wiki-Page](https://github.com/fraunhoferhhi/vvenc/wiki) for more inform
 * [Publications](https://github.com/fraunhoferhhi/vvenc/wiki/Publications)
 * [Version history](https://github.com/fraunhoferhhi/vvenc/wiki/Changelog)
 
+## Rhizomatica's Debian repository
+
+Package can be installed, for example, in a root shell:
+
+    $ wget http://packages.hermes.radio/hermes/rafael.key
+    $ apt-key add rafael.key
+    $ echo deb  http://packages.hermes.radio/hermes/ bullseye main >> /etc/apt/sources.list
+    $ apt-get update
+    $ apt-get install vvenc
+
 ## Build
 
 VVenC uses CMake to describe and manage the build process. A working [CMake](https://cmake.org/) installation is required to build the software. In the following, the basic build steps are described. Please refer to the [Wiki](https://github.com/fraunhoferhhi/vvenc/wiki/Build) for the description of all build options.
