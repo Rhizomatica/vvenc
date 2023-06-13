@@ -1,3 +1,9 @@
+vvenc (1.8.0-1) unstable; urgency=medium
+
+  * New upstream release.
+
+ -- Rafael Diniz <rafael@rhizomatica.org>  Tue, 13 Jun 2023 20:33:31 +0100
+
 vvenc (1.7.0-1) unstable; urgency=medium
 
   * New upstream release.
