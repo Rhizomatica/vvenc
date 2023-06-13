@@ -2,8 +2,6 @@
 
 ifeq ($(DEB_HOST_ARCH_CPU),amd64)
 	confflags=-DVVENC_ENABLE_X86_SIMD=TRUE
-else
-	confflags=-DVVENC_ENABLE_X86_SIMD=FALSE
 endif
 
 %:
